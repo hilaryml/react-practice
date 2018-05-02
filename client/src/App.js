@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
@@ -20,22 +19,26 @@ class App extends Component {
         'Content-Type': 'application/json'
       },
     })
-      .then(response => response.json())
-      .then(books => this.setState({ books }))
-      .catch(err => console.log(err))
+    .then(response => response.json())
+    .then(books => this.setState({ books }))
+    .catch(err => console.log(err))
   }
 
   render() {
     console.log(this.state.books);
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        {this.state.books.map((book) => {
+          return (
+            <div
+              key={book.id}
+              className="book-div">
+              <h1>Title: {book.title}</h1>
+              <img alt={book.title} src={book.image_url} />
+              <p>Description: {book.description}</p>
+            </div>
+          )
+        })}
       </div>
     );
   }
