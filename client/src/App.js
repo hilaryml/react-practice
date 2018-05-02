@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import BookForm from './components/BookForm';
 import './App.css';
 
 class App extends Component {
@@ -28,19 +29,22 @@ class App extends Component {
     console.log(this.state.books);
     return (
       <div className="App">
-        {this.state.books.map((book) => {
-          return (
-            <div
-              key={book.id}
-              className="book-div">
-              <h1>Title: {book.title}</h1>
-              <img
-                alt={book.title}
-                src={book.image_url} />
-              <p>Description: {book.description}</p>
-            </div>
-          )
-        })}
+      <BookForm />
+        <div className="book-container">
+          {this.state.books.map((book) => {
+            return (
+              <div
+                key={book.id}
+                className="book-div">
+                <h1>Title: {book.title}</h1>
+                <img
+                  alt={book.title}
+                  src={book.image_url} />
+                <p>Description: {book.description}</p>
+              </div>
+            )
+          })}
+        </div>
       </div>
     );
   }
