@@ -1,11 +1,15 @@
 .App {
+  text-align: center;
+}
+
+.book-container {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-evenly;
   align-items: baseline;
-  text-align: center;
   align-content: space-around;
 }
 
 .book-div {
+  flex-basis: 33%;
 }
