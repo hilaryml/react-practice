@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 
 export default class BookForm extends Component {
 
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
 
     this.state = {
       title: '',
