@@ -12,7 +12,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('/books', {
+    return fetch('/books', {
       method: 'GET',
       headers: {
         'Accepts': 'application/json',
@@ -34,7 +34,9 @@ class App extends Component {
               key={book.id}
               className="book-div">
               <h1>Title: {book.title}</h1>
-              <img alt={book.title} src={book.image_url} />
+              <img
+                alt={book.title}
+                src={book.image_url} />
               <p>Description: {book.description}</p>
             </div>
           )
