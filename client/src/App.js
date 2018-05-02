@@ -4,12 +4,29 @@ import './App.css';
 
 class App extends Component {
 
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
 
     this.state = {
       books: []
     }
+
+    this.createBook = this.createBook.bind(this)
+  }
+
+  createBook(newBook) {
+    return fetch('/books', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newBook)
+    })
+    .then(response => response.json())
+    .then(book => this.setState({
+      books: this.state.books.concat(book)
+    }))
+    .catch(err => console.log(err))
   }
 
   componentDidMount() {
@@ -29,7 +46,7 @@ class App extends Component {
     console.log(this.state.books);
     return (
       <div className="App">
-      <BookForm />
+      <BookForm createBook={this.createBook}/>
         <div className="book-container">
           {this.state.books.map((book) => {
             return (

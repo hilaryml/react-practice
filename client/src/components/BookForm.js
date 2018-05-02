@@ -32,16 +32,7 @@ export default class BookForm extends Component {
 
   handleOnSubmit(event) {
     event.preventDefault();
-    return fetch('/books', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(this.state)
-    })
-    .then(response => response.json())
-    .then(book => console.log(book))
-    .catch(err => console.log(err))
+    this.props.createBook(this.state)
   }
 
   render() {
